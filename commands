@@ -1,0 +1,9 @@
+helm del --purge cert-manager
+
+helm install \
+  --name cert-manager \
+  --namespace tools \
+  --set ingressShim.defaultIssuerName=letsencrypt-fuchicorp-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  stable/cert-manager \
+  --version v0.3.0
